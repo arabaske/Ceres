@@ -1,0 +1,30 @@
+div{
+    display: inline;
+    color: black;
+    padding: 3px 10px 3px 10px;
+}
+
+#header{
+    display: block;
+    width: 85%;
+    background-color: darkgray;
+    margin: 30px auto;
+    height: 300px;
+    position: relative;
+}
+
+.nav_right{
+    position:absolute;
+    bottom:0;
+    margin-bottom: 15px;
+    margin-left: 50px;
+}
+
+.nav-pane{
+    padding: 15px;
+    margin-right: 35px;
+}
+
+.nav-pane:hover{
+    text-decoration-line: underline;
+}

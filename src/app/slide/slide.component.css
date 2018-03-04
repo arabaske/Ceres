@@ -1,0 +1,13 @@
+div{
+    display: inline;
+}
+
+.slide {
+    transition: opacity 1s;
+    opacity: 1;
+  }
+  
+  .slide[class*="-remove"] {
+    transition: none; 
+    opacity: 0;
+  }

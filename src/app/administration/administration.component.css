@@ -1,0 +1,8 @@
+.admin_pane{
+    display: block;
+    width: 85%;
+    background-color: linen;
+    margin: 30px auto;
+    height: 300px;
+    position: relative;
+}

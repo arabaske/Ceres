@@ -1,0 +1,13 @@
+<div class="news_frame">
+  <div class="news_action_bar">
+    <span class="action_bar_text_grey">{{action}}</span>
+  </div>
+  <div class="news_html">
+    <ckeditor [(ngModel)]="editorContent" debounce="500">
+      <p>Hello <strong>world</strong></p>
+    </ckeditor>
+    <div id="news_submit_button" (click)="submit_click()">Submit</div>
+  </div>
+</div>
+
+<div style="margin: 30px;"> {{test}} </div>

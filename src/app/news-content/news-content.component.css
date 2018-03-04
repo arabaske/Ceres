@@ -1,0 +1,18 @@
+.news_html{
+    display: block;
+    position: relative;
+}
+
+#news_submit_button{
+    margin: 0;
+    display: block;
+    background-color: #f0ecec;
+    position: absolute;
+    right:0;
+    padding: 5px;
+}
+
+.news_frame{
+    padding: 30px;
+    background-color: #f8f8f8;
+}
