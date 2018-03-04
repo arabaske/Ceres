@@ -10,7 +10,7 @@ export class ActionBarComponent implements OnInit {
   @Input() appName: string;
   currentTime: Date;
 
-  constructor() { 
+  constructor() {
     this.currentTime = new Date();
   }
 

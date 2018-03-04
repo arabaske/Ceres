@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 body{
+    margin: 0;
     background-color: #fafeff;
+}
+
+.white_bg_button{
+    background: transparent;
+    background-repeat:no-repeat;
+    color: azure;
+    padding: 4%;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border: 2px solid azure;
+    font-size: 120%;
 }

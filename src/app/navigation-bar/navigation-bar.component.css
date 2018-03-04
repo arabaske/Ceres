@@ -1,0 +1,28 @@
+div{
+    display: inline-block;
+}
+
+.white_panel{
+    background-color: white;
+    width: 100%;
+    padding: 1%;
+}
+
+.align_right{
+    position: absolute;
+    right: 30%;
+    background-color: white;
+}
+
+.navigation_item{
+    padding: 25px;
+}
+
+#app_name{
+    font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-style: normal;
+    font: normal;
+    font-weight: lighter;
+    font-size: 250%;
+    margin-left: 4%;
+}

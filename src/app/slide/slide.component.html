@@ -1,8 +1,6 @@
-<div slide>
-  <div id="slide_image">
-    <img src="{{slide.url}}">
-  </div>
-  <div id="slide_text">
+<div class="slideElement" *ngIf="currentSlideId == slide.id" [@enterAnimation]>
+  <img src="{{slide.url}}">
+  <div class="centered" id="slide_text">
     <p>{{slide.text}}</p>
   </div>
 </div>

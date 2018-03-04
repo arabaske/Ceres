@@ -1,9 +1,6 @@
-<ul>
-  <li *ngFor="let slide of slides">
-    <app-slide [slide] = "slide"></app-slide>
-  </li>
-</ul>
-<div>
-  <p>{{currentSlideIndex}}</p>
-  <button (click)="next_slide()">Next</button>
+
+
+<div *ngFor="let slide of slides" class="container">
+  <app-slide [slide] = "slide" [currentSlideId]= "currentSlideIndex"></app-slide>
 </div>
+

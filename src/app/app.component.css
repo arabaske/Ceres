@@ -1,0 +1,22 @@
+
+.bg {
+    /* The image used */
+    /*background-image: url("../assets/images/bg_001.jpg");*/
+    background-color: aliceblue;
+
+    /* Full screen */
+    width: 100vw;
+    min-height: 100vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.content{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    /*overflow: hidden;*/
+}
+

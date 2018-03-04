@@ -1,0 +1,35 @@
+p {
+    border: 1px solid;
+    padding: 2px 5px;
+    height: auto;
+    margin: auto;
+  
+    /* BOTH of the following are required for text-overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    white-space: initial;
+
+    color: azure;
+
+    opacity: 0.65;
+  }
+
+/* Centered text */
+.centered {
+  position: absolute;
+  color: azure;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered h1{
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.centered h2 {
+  font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-style: normal;
+  font: normal;
+  font-weight: lighter;
+}

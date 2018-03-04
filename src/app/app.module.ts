@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 
 import { FormsModule } from '@angular/forms';
 
-//external libraries
+// external libraries
 import { CKEditorModule } from 'ng2-ckeditor';
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { SlideComponent } from './slide/slide.component';
 import { SlideListComponent } from './slide-list/slide-list.component';
+import { ShellComponent } from './shell/shell.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 
 
@@ -30,10 +33,13 @@ import { SlideListComponent } from './slide-list/slide-list.component';
     DashboardComponent,
     AdministrationComponent,
     SlideComponent,
-    SlideListComponent
+    SlideListComponent,
+    ShellComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     CKEditorModule,
     FormsModule
