@@ -24,6 +24,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { AgmCoreModule } from '@agm/core';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CottageComponent } from './cottage/cottage.component';
+import { SlideService } from './slide.service';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+
+import { MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import { CottageComponent } from './cottage/cottage.component';
     ShellComponent,
     NavigationBarComponent,
     ReservationComponent,
-    CottageComponent
+    CottageComponent,
+    ReservationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -47,11 +52,12 @@ import { CottageComponent } from './cottage/cottage.component';
     AppRoutingModule,
     CKEditorModule,
     FormsModule,
+    MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBGsEOpFN7riegZF2JW6HdhWzv24sOo1ew'
     })
   ],
-  providers: [],
+  providers: [SlideService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

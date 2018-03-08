@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Slide } from '../models/slide';
 import { SLIDES } from '../mock-slides';
 import { SliderConfig, SliderTextAlign } from '../models/sliderConfig';
+import { SlideService } from '../slide.service';
 
 @Component({
   selector: 'app-shell',
@@ -10,7 +11,7 @@ import { SliderConfig, SliderTextAlign } from '../models/sliderConfig';
 })
 export class ShellComponent implements OnInit {
 
-  HomeSlides: Slide[] = SLIDES;
+  HomeSlides: Slide[];
   sliderConfig: SliderConfig = {
     textAlign: SliderTextAlign.centered,
     hasOverlay: false,
@@ -19,10 +20,17 @@ export class ShellComponent implements OnInit {
     slideAnimation: ''
   }
   
-  constructor() { 
+  constructor(private slideService:SlideService) { 
+    
   }
 
   ngOnInit() {
+    this.getSlides();
+  }
+
+  getSlides(): void{
+    this.slideService.getShellSlide()
+    .subscribe(slides => this.HomeSlides = slides);
   }
 
 }
