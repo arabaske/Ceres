@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5b4ab283cb405682e90c8ae8667a9baab00080f4" datatype="html">
+        <source>Welcome to Martines Stuga</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04651fef33913041da2c1c123dde647e54957f01" datatype="html">
+        <source>
+        Ideally situated in Angelhöm&apos;s bay, this cottage will allow you to fully enjoy your holiday in Skane.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0e01df279084f3105a87d4a93f2ee9b14f4efe1f" datatype="html">
+        <source>
+        Discover the charm of this part of Sweden.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eae77bfd5ae46bdf34f4b775a358cd4199b2e27b" datatype="html">
+        <source>Localisation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/navigation-bar/navigation-bar.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a85d7438b8b549b5745039f1bce2f7fb02b6d389" datatype="html">
+        <source>Cabin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/navigation-bar/navigation-bar.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b83f6eeea1e502b3abcf34eee753315bc69062ea" datatype="html">
+        <source>Reservation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/navigation-bar/navigation-bar.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

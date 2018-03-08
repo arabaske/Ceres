@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  lat: number = 56.254093;
+  lng: number = 12.843180;
+
   constructor() { }
 
   ngOnInit() {

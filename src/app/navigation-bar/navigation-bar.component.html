@@ -1,8 +1,20 @@
 <div class='white_panel'>
   <div id='app_name'>{{applicationName}}</div>
   <div class='align_right'>
-    <div class='navigation_item'>{{Home}}</div>
-    <div class='navigation_item'>{{Cabin}}</div>
-    <div class='navigation_item'>{{Reservation}}</div>
+        <nav>
+            <a class="nav_item" i18n routerLink="/dashboard" routerLinkActive="routerActive">Home</a>
+        </nav>
+        <nav>
+            <a class="nav_item" i18n routerLink='/cottage' routerLinkActive="routerActive">Cabin</a>
+        </nav>  
+        <nav>
+            <a class="nav_item" i18n routerLink="/reservation" routerLinkActive="routerActive">Reservation</a>
+        </nav>  
+  </div>
+  <div id="languagepicker">
+    <ul class="languagepicker roundborders">
+        <a href="#en"><li><img src="../assets/images/english_flag.png"/>English</li></a>
+        <a href="#sw"><li><img src="../assets/images/swedish_flag.jpg"/>Swedish</li></a>
+    </ul>
   </div>
 </div>

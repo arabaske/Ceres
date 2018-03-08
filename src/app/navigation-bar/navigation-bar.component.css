@@ -14,8 +14,21 @@ div{
     background-color: white;
 }
 
-.navigation_item{
+
+a.nav_item{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
     padding: 25px;
+}
+
+a.nav_item:hover{
+    background-color: rgb(251, 253, 251);
+}
+
+nav{
+    text-decoration: none;
+    display: inline-block;
 }
 
 #app_name{
@@ -25,4 +38,68 @@ div{
     font-weight: lighter;
     font-size: 250%;
     margin-left: 4%;
+}
+
+#languagepicker{
+    position: absolute;
+    right: 10%;
+    background-color: white;
+}
+
+
+
+.languagepicker {
+	background-color: #FFF;
+	float: left;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	margin: 0 50px 10px 0;
+	vertical-align: top;
+	font-family: arial;
+}
+
+.languagepicker:hover {
+	/* don't forget the 1px border */
+	height: 81px;
+}
+
+.languagepicker a{
+	color: #000;
+	text-decoration: none;
+}
+
+.languagepicker li {
+	display: block;
+	padding: 0px 20px;
+	line-height: 40px;
+	border-top: 1px solid #EEE;
+}
+
+.languagepicker li:hover{
+	background-color: #EEE;
+}
+
+.languagepicker a:first-child li {
+	border: none;
+	background: #FFF !important;
+}
+
+.languagepicker li img {
+	margin-right: 5px;
+}
+
+.roundborders {
+    border-radius: 5px;
+    border: 1px rgb(251, 253, 251) solid;
+}
+
+.large:hover {
+	/* 
+	don't forget the 1px border!
+	The first language is 40px heigh, 
+	the others are 41px
+	*/
+	height: 245px;
 }

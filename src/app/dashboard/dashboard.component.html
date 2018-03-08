@@ -1,1 +1,19 @@
 <app-navigation-bar></app-navigation-bar>
+<div class='content'>
+    <h2 i18n>Welcome to Martines Stuga</h2>
+    <p i18n>
+        Ideally situated in Angelhöm's bay, this cottage will allow you to fully enjoy your holiday in Skane.
+    </p>
+    <p i18n>
+        Discover the charm of this part of Sweden.
+    </p>
+
+    <p i18n></p>
+    <br>
+    <br>
+
+    <h4 i18n>Localisation</h4>
+    <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+</div>

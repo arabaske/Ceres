@@ -1,6 +1,19 @@
 
-
-<div *ngFor="let slide of slides" class="container">
-  <app-slide [slide] = "slide" [currentSlideId]= "currentSlideIndex"></app-slide>
+<div [ngClass]="(config.isFullScreen) ? 'container' : 'container tiny_padding'">
+  <div *ngFor="let slide of slides" [@slideState]="slide.state">
+    <div *ngIf="slide.id == currentSlideIndex">
+        <app-slide [slide] = "slide" [currentSlideId]= "currentSlideIndex" [isFullScreen]="config.isFullScreen"></app-slide>
+        <div *ngIf="config.hasOverlay" id="overlay">
+            <div *ngIf="slide.text.length > 0">
+                <p>{{slide.text}}</p>
+            </div>
+            <ul>
+                <li *ngFor="let slide of slides">
+                    <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
+                    (click)="switchSlide(slide.id)"></span> 
+                </li>
+            </ul>
+        </div> 
+    </div>
+  </div>
 </div>
-

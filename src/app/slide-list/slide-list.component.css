@@ -1,6 +1,64 @@
 
 .container{
-    margin: 0;
-    height: 100%;
-    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
 }
+
+.tiny_padding{
+    padding: 0.5%;
+}
+
+ul{
+    display: flex;
+    align-items: stretch; /* Default */
+    width: 8%;
+    margin: auto;
+    padding: 0.5%;
+    justify-content: space-between;
+}
+
+li{
+    text-decoration: none;
+    list-style-type: none;
+    float: left;
+}
+
+li span {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #f3f5f7;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .dot:hover {
+    background-color:  rgb(118, 228, 118);
+  }
+
+  .selected_dot{
+      background-color:  rgb(118, 228, 118);
+  }
+
+  #overlay{
+    position: absolute;
+    margin: auto;
+    width: 99%;
+    height: 10%;
+    bottom: 1%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    color: white;
+    /*cursor: pointer;*/
+  }
+
+  p{
+      margin-left: 2%;
+  }

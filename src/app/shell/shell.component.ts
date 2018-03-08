@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Slide } from '../models/slide';
+import { SLIDES } from '../mock-slides';
+import { SliderConfig, SliderTextAlign } from '../models/sliderConfig';
 
 @Component({
   selector: 'app-shell',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
-  constructor() { }
+  HomeSlides: Slide[] = SLIDES;
+  sliderConfig: SliderConfig = {
+    textAlign: SliderTextAlign.centered,
+    hasOverlay: false,
+    isFullScreen: true,
+    isTextIN: false,
+    slideAnimation: ''
+  }
+  
+  constructor() { 
+  }
 
   ngOnInit() {
   }

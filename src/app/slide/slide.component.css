@@ -11,6 +11,15 @@ div{
   color: white;
   width: 100%;
   height: 100%;
+
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+  
 }
 
 /* Top left text */
@@ -37,7 +46,16 @@ div{
 /* Centered text */
 .centered {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: auto;
+}
+
+.fullscreen{
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.embeded{
+  /* fill parent element */
+  width: 100%;
+  height: 100%;
 }

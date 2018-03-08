@@ -21,7 +21,9 @@ import { SlideListComponent } from './slide-list/slide-list.component';
 import { ShellComponent } from './shell/shell.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
-
+import { AgmCoreModule } from '@agm/core';
+import { ReservationComponent } from './reservation/reservation.component';
+import { CottageComponent } from './cottage/cottage.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +37,19 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     SlideComponent,
     SlideListComponent,
     ShellComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    ReservationComponent,
+    CottageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CKEditorModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBGsEOpFN7riegZF2JW6HdhWzv24sOo1ew'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

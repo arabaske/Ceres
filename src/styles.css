@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     margin: 0;
-    background-color: #fafeff;
+    background-color: #f3f5f7;
 }
 
 .white_bg_button{
@@ -14,4 +14,20 @@ body{
     outline:none;
     border: 2px solid azure;
     font-size: 120%;
+}
+
+.content{
+    width: 50%;
+    margin: auto;
+}
+
+h2{
+    font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-style: normal;
+    font: normal;
+    font-weight: lighter;
+}
+
+.routerActive{
+    border-bottom: 3px solid rgb(118, 228, 118);
 }

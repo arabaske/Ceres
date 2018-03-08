@@ -1,6 +1,3 @@
-<div class="slideElement" *ngIf="currentSlideId == slide.id" [@enterAnimation]>
-  <img src="{{slide.url}}">
-  <div class="centered" id="slide_text">
-    <p>{{slide.text}}</p>
-  </div>
+<div class="slideElement">
+  <img src="{{slide.url}}" [ngClass]="(isFullScreen) ? 'fullscreen' : 'embeded'">
 </div>
