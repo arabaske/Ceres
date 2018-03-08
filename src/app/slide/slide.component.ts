@@ -12,11 +12,11 @@ export class SlideComponent implements OnInit {
 
   @Input() currentSlideId: number;
   @Input() slide: Slide;
-  @Input() isFullScreen: boolean = false;
+  @Input() isFullScreen = false;
 
 
   constructor() {
-    //this.slide.state = (this.slide.id == this.currentSlideId) ? 'active' : 'inactive';
+    // this.slide.state = (this.slide.id == this.currentSlideId) ? 'active' : 'inactive';
   }
 
   ngOnInit() {

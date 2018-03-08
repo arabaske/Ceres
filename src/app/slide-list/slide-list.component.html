@@ -1,7 +1,7 @@
 
 <div [ngClass]="(config.isFullScreen) ? 'container' : 'container tiny_padding'">
-  <div *ngFor="let slide of slides" [@slideState]="slide.state">
-    <div *ngIf="slide.id == currentSlideIndex">
+  <ng-container *ngFor="let slide of slides">
+    <div *ngIf="slide.id == currentSlideIndex" [@slideState]>
         <app-slide [slide] = "slide" [currentSlideId]= "currentSlideIndex" [isFullScreen]="config.isFullScreen"></app-slide>
         <div *ngIf="config.hasOverlay" id="overlay">
             <div *ngIf="slide.text.length > 0">
@@ -15,5 +15,8 @@
             </ul>
         </div> 
     </div>
-  </div>
+  </ng-container>
+</div>
+<div>
+    <button (click)="next_slide()">NEXT</button>
 </div>

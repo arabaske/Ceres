@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Reservation } from '../models/reservation'
+import { Reservation } from '../models/reservation';
 
 @Component({
   selector: 'app-reservation-form',
@@ -9,14 +9,14 @@ import { Reservation } from '../models/reservation'
 })
 export class ReservationFormComponent implements OnInit {
 
+  model = new Reservation();
+
+  submitted = false;
+
   constructor() { }
 
   ngOnInit() {
   }
-
-  model = new Reservation();
-
-  submitted = false;
 
   onSubmit() { this.submitted = true; }
 
