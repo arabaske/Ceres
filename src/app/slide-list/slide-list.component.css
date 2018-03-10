@@ -51,7 +51,7 @@ li span {
     position: absolute;
     margin: auto;
     width: 99%;
-    height: 10%;
+    height: auto;
     bottom: 1%;
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
@@ -62,3 +62,36 @@ li span {
   p{
       margin-left: 2%;
   }
+
+  .slide{
+      display: none;
+      position: relative;
+      float: left;
+  }
+
+  .show {
+      display: block;
+  }
+
+  #slider_control {
+      position: relative;
+      padding: 0.5%
+  }
+
+  #back_arrow {
+      display: block;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0.5%;
+  }
+
+  #next_arrow {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0.5%;
+}

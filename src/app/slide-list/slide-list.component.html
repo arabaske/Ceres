@@ -1,22 +1,35 @@
 
 <div [ngClass]="(config.isFullScreen) ? 'container' : 'container tiny_padding'">
-  <ng-container *ngFor="let slide of slides">
-    <div *ngIf="slide.id == currentSlideIndex" [@slideState]>
-        <app-slide [slide] = "slide" [currentSlideId]= "currentSlideIndex" [isFullScreen]="config.isFullScreen"></app-slide>
-        <div *ngIf="config.hasOverlay" id="overlay">
+    <div *ngFor="let slide of slides" [style.width.%]="slides.length * 100"
+        [@slideState] = "slide.state"
+        (@slideState.done) = "this.animationDone($event, slide)"
+        (@slideState.start) = "this.animationStart($event, slide, slides)">
+
+        <app-slide [slide] = "slide"
+                    [isFullScreen]="config.isFullScreen" 
+                    [ngClass]="(isVisible(slide)) ? 'slide show' : 'slide'"
+                    [style.width.%]="100 / (slides.length)">
+        </app-slide>
+
+        <div *ngIf="(config.hasOverlay && isVisible(slide))" id="overlay">
             <div *ngIf="slide.text.length > 0">
                 <p>{{slide.text}}</p>
             </div>
-            <ul>
-                <li *ngFor="let slide of slides">
-                    <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
-                    (click)="switchSlide(slide.id)"></span> 
-                </li>
-            </ul>
+            <div id="slider_control">
+                <ul>
+                    <li *ngFor="let slide of slides">
+                        <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
+                        (click)="switchSlide(slide.id)"></span> 
+                    </li>
+                </ul> 
+                <input *ngIf="this.currentSlideIndex > 0"
+                        type="image" src="../assets/icons/back.png" 
+                        id="back_arrow" (click)="this.prevSlide()">
+                <input *ngIf="this.currentSlideIndex < (this.slides.length - 1)"
+                        type="image" src="../assets/icons/next.png" 
+                        id="next_arrow" (click)="this.nextSlide()">
+            </div>
         </div> 
     </div>
-  </ng-container>
 </div>
-<div>
-    <button (click)="next_slide()">NEXT</button>
-</div>
+

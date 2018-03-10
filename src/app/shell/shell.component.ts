@@ -18,17 +18,16 @@ export class ShellComponent implements OnInit {
     isFullScreen: true,
     isTextIN: false,
     slideAnimation: ''
-  }
-  
-  constructor(private slideService:SlideService) { 
-    
+  };
+
+  constructor(private slideService: SlideService) {
   }
 
   ngOnInit() {
     this.getSlides();
   }
 
-  getSlides(): void{
+  getSlides(): void {
     this.slideService.getShellSlide()
     .subscribe(slides => this.HomeSlides = slides);
   }

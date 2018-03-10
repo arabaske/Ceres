@@ -1,16 +1,19 @@
 
 export class Slide {
-    constructor(public id: number, public url: string, public text: string, public state = 'inactive') { }
+    constructor(public id: number,
+        public url: string,
+        public text: string,
+        public state = 'right-sided') { }
 
-    toggleState() {
-        this.state = this.state === 'active' ? 'inactive' : 'active';
-    }
-
-    activate() {
+    toCurrent() {
         this.state = 'active';
     }
 
-    deactivate() {
-        this.state = 'inactive';
+    toLeft() {
+        this.state = 'left-sided';
+    }
+
+    toRight() {
+        this.state = 'right-sided';
     }
 }
