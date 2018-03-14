@@ -1,6 +1,6 @@
 import { Slide } from './slide';
 
-export class SlideAnimation {
+export class SlideAnimationModel {
     public fromSlideID: number;
     public toSlideID: number;
     public isBeingAnimated = false;

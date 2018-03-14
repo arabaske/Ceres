@@ -1,76 +1,100 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {animate, state, style, transition, trigger, keyframes} from '@angular/animations';
 import { SLIDES } from '../mock-slides';
 import { Slide } from '../models/slide';
 import { SliderConfig } from '../models/sliderConfig';
-import { SlideAnimation } from '../models/slide.animation.model';
+import { SlideAnimationModel } from '../models/slide.animation.model';
+import { Observable, Subscriber } from 'rxjs/Rx';
+import "rxjs/add/operator/takeWhile";
+import { timer } from 'rxjs/observable/timer';
+import { takeWhile } from 'rxjs/operators';
+import { forEach } from '@angular/router/src/utils/collection';
+import { SlideAnim } from '../animations/slide.animation';
 
 @Component({
   selector: 'app-slide-list',
   templateUrl: './slide-list.component.html',
   styleUrls: ['./slide-list.component.css'],
-  animations: [
-    trigger('slideState', [
-      transition('right-sided => active', [
-        style({transform: 'translateX(0)', opacity: 1}),
-        animate('500ms', style({transform: 'translateX(-25%)', opacity: 1}))
-      ]),
-      transition('active => left-sided', [
-        style({transform: 'translateX(0)', opacity: 1}),
-        animate('500ms', style({transform: 'translateX(-25%)', opacity: 1}))
-      ]),
-      transition('left-sided => active', [
-        style({transform: 'translateX(-25%)', opacity: 1}),
-        animate('500ms', style({transform: 'translateX(0)', opacity: 1}))
-      ]),
-      transition('active => right-sided', [
-        style({transform: 'translateX(-25%)', opacity: 1}),
-        animate('500ms', style({transform: 'translateX(0)', opacity: 1}))
-      ])
-    ])
-  ]
+  animations: [SlideAnim]
 })
-export class SlideListComponent implements OnInit {
+export class SlideListComponent implements OnInit, OnDestroy {
 
   @Input() slides: Slide[];
   @Input() config: SliderConfig;
   currentSlideIndex: number;
 
-  slideAnimation: SlideAnimation;
+  slideAnimation: SlideAnimationModel;
   transitionCounter: number;
+  private alive: boolean = true;
+  private touched: boolean = false;
+
+  timerObservable =  Observable.timer(4000,4000);
 
   constructor() {
-  }
-
-  ngOnInit() {
+    console.log('CONSTRUCT component slide-list');
     this.currentSlideIndex = 0;
-    this.slideAnimation = new SlideAnimation();
+    this.slideAnimation = new SlideAnimationModel();
     this.slideAnimation.fromSlideID = 0;
     this.slideAnimation.toSlideID = 0;
     this.transitionCounter = 0;
+  }
+
+  ngOnInit() {
+    console.log('INIT component slide-list');
     this.switchSlide(0);
+
+    if(this.slides.length > 1){
+      this.timerObservable
+      .takeWhile(val => (this.alive && !this.touched))
+      .subscribe(t=> {
+          this.nextSlide(true);
+      });
+    }
+  }
+
+  public ngOnDestroy() {
+    console.log('Destroy component slide-list');
+    this.alive = false;
+    this.initSlideState();
+  }
+
+  private initSlideState(){
+    // re-init the slides elements.
+    this.slides.forEach(element => {
+      element.toRight();
+    });
   }
 
   prevSlide() {
+    this.touched = true;
+
     if (this.currentSlideIndex >= 1) {
       this.switchSlide(this.currentSlideIndex - 1);
     }
   }
 
-  nextSlide() {
+  nextSlide(automatic) {
+    if(!automatic){
+      this.touched = true;
+    }
+
     if (this.currentSlideIndex < this.slides.length - 1) {
       this.switchSlide(this.currentSlideIndex + 1);
+    } else {
+      this.switchSlide(0);
     }
   }
 
   animationDone($event, slide) {
     console.log('ANIM DONE ' + $event.fromState + ' : ' + $event.toState);
     console.log('____COUNTER: ' + this.transitionCounter);
-    if (this.transitionCounter === 0) {
-      this.transitionCounter ++;
-    } else {
-      this.slideAnimation.isBeingAnimated = false;
-      this.transitionCounter = 0;
+    if(($event.fromState !== 'void') && ($event.toState !== 'void')){
+      if (this.transitionCounter === 0) {
+        this.transitionCounter ++;
+      } else {
+        this.slideAnimation.isBeingAnimated = false;
+        this.transitionCounter = 0;
+      }
     }
   }
 
@@ -78,7 +102,10 @@ export class SlideListComponent implements OnInit {
   animationStart($event, slide, slides) {
     console.log('ANIM START ' + $event.fromState + ' : ' + $event.toState);
     // console.log(slides);
-    this.slideAnimation.isBeingAnimated = true;
+    if(($event.fromState !== 'void') && ($event.toState !== 'void')){
+      this.slideAnimation.isBeingAnimated = true;
+    }
+
     if ($event.fromState === 'active') {
       this.slideAnimation.toSlideID = slide.id;
     } else if (($event.fromState !== 'void') && ($event.toState === 'active')) {

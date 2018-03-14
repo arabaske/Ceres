@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Slide } from '../models/slide';
 import { SliderConfig, SliderTextAlign } from '../models/sliderConfig';
 import { COTTAGES_SLIDES } from '../mock-slides';
@@ -9,10 +9,12 @@ import { SlideService } from '../slide.service';
   templateUrl: './cottage.component.html',
   styleUrls: ['./cottage.component.css']
 })
-export class CottageComponent implements OnInit {
+export class CottageComponent implements OnInit, OnDestroy {
 
   cottageSlides: Slide[];
   sliderConfig: SliderConfig;
+
+  private alive: boolean = true;
 
   constructor(private slideService:SlideService) {
 
@@ -27,12 +29,20 @@ export class CottageComponent implements OnInit {
       isFullScreen:false
     }
 
+    console.log('Fetching slides...');
     this.getSlides();
   }
 
   getSlides(): void {
     this.slideService.getCottageSlide()
+    .takeWhile(v => this.alive)
     .subscribe(slides => this.cottageSlides = slides);
   }
+
+  public ngOnDestroy() {
+    console.log('Destroy component slide-list');
+    this.alive = false;
+  }
+
 
 }

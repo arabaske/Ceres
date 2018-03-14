@@ -1,7 +1,7 @@
 
 <div [ngClass]="(config.isFullScreen) ? 'slide_container' : 'slide_container tiny_padding'">
     <div *ngFor="let slide of slides" [style.width.%]="slides.length * 100"
-        [@slideState] = "slide.state"
+        [@slideState] = "{value: slide.state, params: { slide_pct_left: (-100 / slides.length) + '%'}}"
         (@slideState.done) = "this.animationDone($event, slide)"
         (@slideState.start) = "this.animationStart($event, slide, slides)">
 
