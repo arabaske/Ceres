@@ -1,3 +1,105 @@
-<p>
-  reservation-form works!
-</p>
+<div class="container">
+  <h2 i18n>Reservation Form</h2>
+  <form class="inputs">
+
+       {{diagnostic}}
+
+    <div class="row">
+        <div class="form-group col-md-6">
+          <label for="firstName" i18n>First Name</label>
+          <input type="text" class="form-control" id="inputFirstName" placeholder="First Name"
+                required
+                [(ngModel)]="model.firstName" name="inputFirstName" #firstName="ngModel">
+                <div [hidden]="firstName.valid || firstName.pristine"
+                    class="alert alert-danger" i18n>
+                    Value is required
+                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastName" i18n>Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="last Name"
+                required
+                [(ngModel)]="model.LastName" name="inputLastName" #lastName="ngModel">
+                <div [hidden]="lastName.valid || lastName.pristine"
+                    class="alert alert-danger" i18n>
+                    Value is required
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="email" i18n>E-mail</label>
+            <input type="mail" class="form-control" id="inputEmail" placeholder="e-mail"
+                required
+                [(ngModel)]="model.email" name="email" #email="ngModel">
+                <div [hidden]="email.valid || email.pristine"
+                    class="alert alert-danger" i18n>
+                    Please enter a valid email
+                </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="phone" i18n>Phone number</label>
+            <input type="text" class="form-control" id="inputPhone" placeholder="phone number"
+                [(ngModel)]="model.phone" name="phone">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="fromDate" i18n>From</label>
+            <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                    required
+                    name="fromDate" [(ngModel)]="model.fromDate" #fromDate="ngModel"
+                    ngbDatepicker #fromDatePicker="ngbDatepicker">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="fromDatePicker.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </button>
+            </div>
+            </div>
+            <div [hidden]="fromDate.valid || fromDate.pristine"
+                class="alert alert-danger" i18n>
+                Invalid date
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="toDate" i18n>To</label>
+            <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                    required
+                    name="toDate" [(ngModel)]="model.toDate" #toDate="ngModel"
+                    ngbDatepicker #toDatePicker="ngbDatepicker">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="toDatePicker.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </button>
+            </div>
+            </div>
+            <div [hidden]="toDate.valid || toDate.pristine"
+                class="alert alert-danger" i18n>
+                Invalid date
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="form-group">
+        <label for="additionalInformation" i18n>Additional informations</label>
+        <textarea class="form-control" id="additionalInfoTextArea" rows="3"
+            [(ngModel)]="model.additionalInformation" name="additionalInformation">
+        </textarea>
+    </div>
+
+    <br/>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
+
+
+
+

@@ -27,7 +27,7 @@ import { CottageComponent } from './cottage/cottage.component';
 import { SlideService } from './slide.service';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 
-import { MatNativeDateModule } from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -52,10 +52,10 @@ import { MatNativeDateModule } from '@angular/material';
     AppRoutingModule,
     CKEditorModule,
     FormsModule,
-    MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBGsEOpFN7riegZF2JW6HdhWzv24sOo1ew'
-    })
+    }),
+    NgbModule.forRoot()
   ],
   providers: [SlideService],
   bootstrap: [AppComponent]
