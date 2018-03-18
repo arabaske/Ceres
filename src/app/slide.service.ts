@@ -9,11 +9,11 @@ export class SlideService {
 
   constructor() { }
 
-  getShellSlide(): Observable<Slide[]>{
+  getShellSlide(): Observable<Slide[]> {
     return of(SLIDES);
   }
 
-  getCottageSlide(): Observable<Slide[]>{
+  getCottageSlide(): Observable<Slide[]> {
     return of(COTTAGES_SLIDES);
   }
 

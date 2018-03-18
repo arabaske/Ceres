@@ -60,7 +60,7 @@
                             ngbDatepicker #fromDatePicker="ngbDatepicker">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="fromDatePicker.toggle()" type="button">
-                        <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                        <img src="../assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                         </button>
                     </div>
                     </div>
@@ -78,7 +78,7 @@
                             ngbDatepicker #toDatePicker="ngbDatepicker">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="toDatePicker.toggle()" type="button">
-                        <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                        <img src="../assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                         </button>
                     </div>
                     </div>
@@ -108,6 +108,13 @@
     <div [hidden]="!submitted">
         <p i18n>You reservation has not yet been approved ! You will be contacted blabla...</p>
     </div>
+
+
+    <ul>
+        <li *ngFor="let item of items| async">
+            <pre>{{ item | json }}</pre>
+        </li>
+    </ul>
 </div>
 
 

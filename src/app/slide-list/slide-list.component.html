@@ -19,7 +19,7 @@
                 <ul>
                     <li *ngFor="let slide of slides">
                         <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
-                        (click)="switchSlide(slide.id)"></span> 
+                        (click)="switchSlide(slide.id, true)"></span> 
                     </li>
                 </ul> 
                 <input *ngIf="this.currentSlideIndex > 0"

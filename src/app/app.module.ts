@@ -29,6 +29,12 @@ import { ReservationFormComponent } from './reservation-form/reservation-form.co
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +61,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBGsEOpFN7riegZF2JW6HdhWzv24sOo1ew'
     }),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [SlideService],
   bootstrap: [AppComponent]

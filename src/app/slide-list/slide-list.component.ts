@@ -4,10 +4,11 @@ import { SLIDES } from '../mock-slides';
 import { Slide } from '../models/slide';
 import { SliderConfig } from '../models/sliderConfig';
 import { SlideAnimationModel } from '../models/slide.animation.model';
-import { Observable, Subscriber } from 'rxjs/Rx';
-import "rxjs/add/operator/takeWhile";
-import { timer } from 'rxjs/observable/timer';
+import { Observable } from 'rxjs/Observable';
+import { Subscriber } from 'rxjs/Subscriber';
+import 'rxjs/add/operator/takeWhile';
 import { takeWhile } from 'rxjs/operators';
+import 'rxjs/add/observable/timer';
 import { forEach } from '@angular/router/src/utils/collection';
 import { SlideAnim } from '../animations/slide.animation';
 
@@ -25,10 +26,10 @@ export class SlideListComponent implements OnInit, OnDestroy {
 
   slideAnimation: SlideAnimationModel;
   transitionCounter: number;
-  private alive: boolean = true;
-  private touched: boolean = false;
+  private alive = true;
+  private touched = false;
 
-  timerObservable =  Observable.timer(4000,4000);
+  timerObservable =  Observable.timer(4000, 4000);
 
   constructor() {
     console.log('CONSTRUCT component slide-list');
@@ -41,12 +42,12 @@ export class SlideListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('INIT component slide-list');
-    this.switchSlide(0);
+    this.switchSlide(0, false);
 
-    if(this.slides.length > 1){
+    if (this.slides.length > 1) {
       this.timerObservable
       .takeWhile(val => (this.alive && !this.touched))
-      .subscribe(t=> {
+      .subscribe(t => {
           this.nextSlide(true);
       });
     }
@@ -58,7 +59,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
     this.initSlideState();
   }
 
-  private initSlideState(){
+  private initSlideState() {
     // re-init the slides elements.
     this.slides.forEach(element => {
       element.toRight();
@@ -66,29 +67,23 @@ export class SlideListComponent implements OnInit, OnDestroy {
   }
 
   prevSlide() {
-    this.touched = true;
-
     if (this.currentSlideIndex >= 1) {
-      this.switchSlide(this.currentSlideIndex - 1);
+      this.switchSlide(this.currentSlideIndex - 1, true);
     }
   }
 
   nextSlide(automatic) {
-    if(!automatic){
-      this.touched = true;
-    }
-
     if (this.currentSlideIndex < this.slides.length - 1) {
-      this.switchSlide(this.currentSlideIndex + 1);
+      this.switchSlide(this.currentSlideIndex + 1, !automatic);
     } else {
-      this.switchSlide(0);
+      this.switchSlide(0, !automatic);
     }
   }
 
   animationDone($event, slide) {
     console.log('ANIM DONE ' + $event.fromState + ' : ' + $event.toState);
     console.log('____COUNTER: ' + this.transitionCounter);
-    if(($event.fromState !== 'void') && ($event.toState !== 'void')){
+    if (($event.fromState !== 'void') && ($event.toState !== 'void')) {
       if (this.transitionCounter === 0) {
         this.transitionCounter ++;
       } else {
@@ -102,7 +97,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
   animationStart($event, slide, slides) {
     console.log('ANIM START ' + $event.fromState + ' : ' + $event.toState);
     // console.log(slides);
-    if(($event.fromState !== 'void') && ($event.toState !== 'void')){
+    if (($event.fromState !== 'void') && ($event.toState !== 'void')) {
       this.slideAnimation.isBeingAnimated = true;
     }
 
@@ -113,7 +108,10 @@ export class SlideListComponent implements OnInit, OnDestroy {
     }
   }
 
-  switchSlide(id: number) {
+  switchSlide(id: number, touched: boolean) {
+    if (touched) {
+      this.touched = true;
+    }
     console.log('switching ' + this.currentSlideIndex + ' -> ' + id);
     if (id > this.currentSlideIndex) {
       for (let _i = this.currentSlideIndex; _i < id; _i++ ) {
