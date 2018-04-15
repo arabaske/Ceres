@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-i18n": "for lang in en se; do ng build --output-path=dist/$lang --aot -prod --bh /$lang/ --i18n-file=src/locale/messages.$lang.xlf --i18n-format=xlf --locale=$lang; done"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +32,7 @@
     "angularfire2": "^5.0.0-rc.6",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "emailjs": "^2.0.0",
     "firebase": "^4.11.0",
     "firebase-admin": "^5.11.0",
     "moment": "^2.21.0",

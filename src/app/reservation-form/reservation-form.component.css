@@ -7,3 +7,37 @@ form .inputs{
     margin-top: 1%;
     margin-bottom: 1%;
 }
+
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+  }
+
+.custom-day.focused {
+    background-color: #e6e6e6;
+}
+
+.custom-day.disabled, .custom-day.disabled:hover{
+    color: darkgray;
+    cursor: auto;
+}
+
+.custom-day.outside {
+    color: darkgray;
+}
+
+.custom-day.range, .custom-day:hover {
+    background-color: rgba(2, 117, 216, 1);
+    color: white;
+}
+
+.custom-day.selected {
+    background-color: rgb(24, 192, 136);
+    color: white;
+}
+.custom-day.faded {
+    background-color: rgba(2, 117, 216, 0.1);
+}

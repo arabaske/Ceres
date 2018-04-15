@@ -1,39 +1,16 @@
-div{
-    display: inline-block;
-}
-
 .white_panel{
     background-color: white;
     width: 100%;
     padding: 1%;
 }
 
-.align_right{
-    position: absolute;
-    right: 30%;
-    background-color: white;
+
+a.nav-link{
+    font-size: 125%;
 }
 
-
-a.nav_item{
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-    padding: 25px;
-}
-
-a.nav_item:hover{
+a.nav-link:hover{
     background-color: rgb(251, 253, 251);
-}
-
-a {
-	text-decoration: none;
-    color: black;
-}
-
-nav{
-    text-decoration: none;
-    display: inline-block;
 }
 
 #app_name{
@@ -41,8 +18,9 @@ nav{
     font-style: normal;
     font: normal;
     font-weight: lighter;
-    font-size: 250%;
-    margin-left: 4%;
+    font-size: 200%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
 
 #languagepicker{
@@ -98,6 +76,18 @@ nav{
 .roundborders {
     border-radius: 5px;
     border: 1px rgb(251, 253, 251) solid;
+}
+
+.nav-language {
+	text-decoration: none;
+}
+
+.nav-language img {
+	margin-right: 5%;
+}
+
+.list-lang {
+	list-style-type: none;
 }
 
 .large:hover {

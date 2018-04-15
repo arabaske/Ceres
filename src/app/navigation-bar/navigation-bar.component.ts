@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,7 +12,14 @@ export class NavigationBarComponent implements OnInit {
   Cabin: string;
   Reservation: string;
 
-  constructor() {
+  navbarCollapsed:boolean = true;
+
+  languages = [
+    { code: 'en', label: 'English', icon: 'assets/images/english_flag.png'},
+    { code: 'se', label: 'Svenska', icon: 'assets/images/swedish_flag.jpg'}
+  ];
+
+  constructor(@Inject(LOCALE_ID) protected localeId: string) {
     this.Home = 'Home';
     this.Cabin = 'Cabin';
     this.Reservation = 'Reservation';
