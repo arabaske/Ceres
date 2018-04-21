@@ -20,7 +20,7 @@ export class ShellComponent implements OnInit {
     slideAnimation: ''
   };
 
-  constructor(private slideService: SlideService) {
+  constructor(public slideService: SlideService) {
   }
 
   ngOnInit() {

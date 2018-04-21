@@ -1,9 +1,11 @@
 
 export class Slide {
     constructor(public id: number,
+        public name: string,
         public url: string,
         public text: string,
-        public state = 'right-sided') { }
+        public state = 'right-sided',
+        public isLoaded = false) { }
 
     toCurrent() {
         this.state = 'active';
@@ -15,5 +17,9 @@ export class Slide {
 
     toRight() {
         this.state = 'right-sided';
+    }
+
+    setLoaded(value: boolean) {
+        this.isLoaded = value;
     }
 }

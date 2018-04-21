@@ -3,6 +3,7 @@ import { Slide } from '../models/slide';
 import { SliderConfig, SliderTextAlign } from '../models/sliderConfig';
 import { COTTAGES_SLIDES } from '../mock-slides';
 import { SlideService } from '../slide.service';
+import { Observable } from '@firebase/util';
 
 @Component({
   selector: 'app-cottage',
@@ -13,10 +14,11 @@ export class CottageComponent implements OnInit, OnDestroy {
 
   cottageSlides: Slide[];
   sliderConfig: SliderConfig;
+  slidesCottage$: Observable<Slide[]>;
 
   private alive: boolean = true;
 
-  constructor(private slideService:SlideService) {
+  constructor(public slideService:SlideService) {
 
    }
 

@@ -1,35 +1,37 @@
 
 <div [ngClass]="(config.isFullScreen) ? 'slide_container' : 'slide_container tiny_padding'">
-    <div *ngFor="let slide of slides" [style.width.%]="slides.length * 100"
-        [@slideState] = "{value: slide.state, params: { slide_pct_left: (-100 / slides.length) + '%'}}"
-        (@slideState.done) = "this.animationDone($event, slide)"
-        (@slideState.start) = "this.animationStart($event, slide, slides)">
+        <div *ngFor="let slide of slides" [style.width.%]="slides.length * 100"
+            [@slideState] = "{value: slide.state, params: { slide_pct_left: (-100 / slides.length) + '%'}}"
+            (@slideState.done) = "this.animationDone($event, slide)"
+            (@slideState.start) = "this.animationStart($event, slide, slides)">
 
-        <app-slide [slide] = "slide"
-                    [isFullScreen]="config.isFullScreen" 
-                    [ngClass]="(isVisible(slide)) ? 'slide show' : 'slide'"
-                    [style.width.%]="100 / (slides.length)">
-        </app-slide>
+            <app-slide [slide] = "slide"
+                        [isFullScreen]="config.isFullScreen" 
+                        [ngClass]="(isVisible(slide)) ? 'slide show' : 'slide'"
+                        [style.width.%]="100 / (slides.length)"
+                        (onSlideLoaded)="onSlideLoaded($event)">
+            </app-slide>
 
-        <div *ngIf="(config.hasOverlay && isVisible(slide))" id="overlay">
-            <div *ngIf="slide.text.length > 0">
-                <p>{{slide.text}}</p>
-            </div>
-            <div id="slider_control">
-                <ul>
-                    <li *ngFor="let slide of slides">
-                        <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
-                        (click)="switchSlide(slide.id, true)"></span> 
-                    </li>
-                </ul> 
-                <input *ngIf="this.currentSlideIndex > 0"
-                        type="image" src="assets/icons/back.png" 
-                        id="back_arrow" (click)="this.prevSlide()">
-                <input *ngIf="this.currentSlideIndex < (this.slides.length - 1)"
-                        type="image" src="assets/icons/next.png" 
-                        id="next_arrow" (click)="this.nextSlide()">
-            </div>
-        </div> 
-    </div>
+            <div *ngIf="(config.hasOverlay && isOverlayVisible(slide))" id="overlay">
+                <div *ngIf="slide.text.length > 0">
+                    <p>{{slide.text}}</p>
+                </div>
+                <div id="slider_control">
+                    <ul>
+                        <li *ngFor="let slide of slides">
+                            <span [ngClass]="(slide.id == currentSlideIndex)?'dot selected_dot':'dot'" 
+                            (click)="switchSlide(slide.id, true)"></span> 
+                        </li>
+                    </ul> 
+                    <input *ngIf="this.currentSlideIndex > 0"
+                            type="image" src="assets/icons/back.png" 
+                            id="back_arrow" (click)="this.prevSlide()">
+                    <input *ngIf="this.currentSlideIndex < (this.slides.length - 1)"
+                            type="image" src="assets/icons/next.png" 
+                            id="next_arrow" (click)="this.nextSlide()">
+                </div>
+            </div> 
+        </div>
 </div>
+
 

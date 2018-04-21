@@ -3,7 +3,6 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class Reservation{
 
     constructor(
-        public id: number,
         public firstName: string,
         public LastName: string,
         public email: string,

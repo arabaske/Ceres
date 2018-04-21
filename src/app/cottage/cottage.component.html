@@ -1,4 +1,6 @@
 <app-navigation-bar></app-navigation-bar>
 <div class="container">
-    <app-slide-list [slides]="cottageSlides" [config]=sliderConfig></app-slide-list>
+    <div *ngIf="(slideService.getCottageSlide() | async) as result">
+        <app-slide-list [slides]="result" [config]=sliderConfig></app-slide-list>
+    </div>
 </div>

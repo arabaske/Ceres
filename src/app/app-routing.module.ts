@@ -6,19 +6,19 @@ import { AdministrationComponent } from './administration/administration.compone
 import { ShellComponent } from './shell/shell.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CottageComponent } from './cottage/cottage.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: ShellComponent},
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'news/:id:action', component: NewsContentComponent },
-  { path: 'admin', component: AdministrationComponent },
   { path: 'reservation', component: ReservationComponent },
-  { path: 'cottage', component: CottageComponent }
+  { path: 'cottage', component: CottageComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, { useHash: true}) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

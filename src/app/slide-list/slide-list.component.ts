@@ -28,6 +28,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
   transitionCounter: number;
   private alive = true;
   private touched = false;
+  public isLoaded = false;
 
   timerObservable =  Observable.timer(4000, 4000);
 
@@ -40,17 +41,21 @@ export class SlideListComponent implements OnInit, OnDestroy {
     this.transitionCounter = 0;
   }
 
+  checkLoadStatus(): boolean{
+    
+    var result = 0;
+    this.slides.forEach(element => {
+      if(element.isLoaded) result = result + 1;
+    });
+
+    console.log('Check loading status' + result);
+
+    return (result === this.slides.length);
+  }
+
   ngOnInit() {
     console.log('INIT component slide-list');
     this.switchSlide(0, false);
-
-    if (this.slides.length > 1) {
-      this.timerObservable
-      .takeWhile(val => (this.alive && !this.touched))
-      .subscribe(t => {
-          this.nextSlide(true);
-      });
-    }
   }
 
   public ngOnDestroy() {
@@ -63,6 +68,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
     // re-init the slides elements.
     this.slides.forEach(element => {
       element.toRight();
+      element.setLoaded(false);
     });
   }
 
@@ -128,8 +134,27 @@ export class SlideListComponent implements OnInit, OnDestroy {
   }
 
   isVisible(slide: Slide) {
-    return ((slide.id === this.currentSlideIndex)
+    return this.alive && ((slide.id === this.currentSlideIndex)
             || ((this.slideAnimation.isBeingAnimated === true) && (this.slideAnimation.isSlideIncluded(slide))));
+  }
+
+  isOverlayVisible(slide: Slide) {
+    return this.alive && (slide.id === this.currentSlideIndex) && !(this.slideAnimation.isBeingAnimated)
+  }
+
+  //EVENT
+
+  onSlideLoaded(id: number){
+    console.log('OnSlideLoaded ' + id);
+    this.isLoaded = this.checkLoadStatus();
+
+    if (this.slides.length > 1 && this.isLoaded) {
+      this.timerObservable
+      .takeWhile(val => (this.alive && !this.touched))
+      .subscribe(t => {
+          if(this.isLoaded) this.nextSlide(true);
+      });
+    }
   }
 
 }

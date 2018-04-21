@@ -1,9 +1,7 @@
 <div class="container">
     <div [hidden] = "submitted">    
-        <h2 i18n>Reservation Form</h2>
+        <h3 i18n>Reservation Form</h3>
         <form class="inputs" (ngSubmit)="onSubmit()" #reservationForm="ngForm">
-
-            {{diagnostic}}
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -61,7 +59,7 @@
                             ngbDatepicker #fromDatePicker="ngbDatepicker" [dayTemplate]="tFrom">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="fromDatePicker.toggle()" type="button">
-                        <img src="../assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                        <img src="assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                         </button>
                     </div>
                     </div>
@@ -80,7 +78,7 @@
                             ngbDatepicker #toDatePicker="ngbDatepicker" [dayTemplate]="tTo">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="toDatePicker.toggle()" type="button">
-                        <img src="../assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                        <img src="assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                         </button>
                     </div>
                     </div>
@@ -136,7 +134,7 @@
         </span>
       </ng-template>
 
-
+<!--
       <div *ngIf="fromItems$ | async; let items; else loading">
 
         <ul>
@@ -146,6 +144,7 @@
         </ul>
       </div>
       <ng-template #loading>Loading&hellip;</ng-template>
+      -->
 
 </div>
 

@@ -37,7 +37,7 @@ const nowDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() +
 export class ReservationFormComponent implements OnInit {
 
   submitted = false;
-  model = new Reservation(1, '', '', '', '', null, null, '');
+  model = new Reservation('', '', '', '', null, null, '');
 
   fromDateDisplayed: NgbDateStruct;
   toDateDisplayed: NgbDateStruct;
@@ -105,7 +105,7 @@ export class ReservationFormComponent implements OnInit {
   }
 
   // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  //get diagnostic() { return JSON.stringify(this.model); }
 
   isDateBooked(date: NgbDateStruct, target: string){
 

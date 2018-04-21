@@ -26,6 +26,19 @@ export class NavigationBarComponent implements OnInit {
     this.applicationName = 'Martines Stuga';
   }
 
+  get currentLanguage(){
+    var localToCheck = (this.localeId.length > 2) ? this.localeId.substring(0, 2) : this.localeId;
+    var result = null;
+
+    this.languages.forEach(element => {
+      if(element.code === localToCheck){
+        result = element;
+      }
+    });
+
+    return result;
+  }
+
   ngOnInit() {
   }
 

@@ -1,17 +1,3 @@
-.white_panel{
-    background-color: white;
-    width: 100%;
-    padding: 1%;
-}
-
-
-a.nav-link{
-    font-size: 125%;
-}
-
-a.nav-link:hover{
-    background-color: rgb(251, 253, 251);
-}
 
 #app_name{
     font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;
@@ -23,78 +9,21 @@ a.nav-link:hover{
 	margin-right: 2%;
 }
 
-#languagepicker{
-    position: absolute;
-    right: 10%;
-    background-color: white;
-}
 
+/*.nav-item {
+	padding-left:5%;
+	padding-right:5%;
+} */
 
-
-.languagepicker {
-	background-color: #FFF;
-	float: left;
-	padding: 0;
-	height: 40px;
-	overflow: hidden;
-	transition: all .3s ease;
-	margin: 0 50px 10px 0;
-	vertical-align: top;
-	font-family: arial;
-}
-
-.languagepicker:hover {
-	/* don't forget the 1px border */
-	height: 81px;
-}
-
-.languagepicker a{
-	color: #000;
-	text-decoration: none;
-}
-
-.languagepicker li {
-	display: block;
-	padding: 0px 20px;
-	line-height: 40px;
-	border-top: 1px solid #EEE;
-}
-
-.languagepicker li:hover{
-	background-color: #EEE;
-}
-
-.languagepicker a:first-child li {
-	border: none;
-	background: #FFF !important;
-}
-
-.languagepicker li img {
-	margin-right: 5px;
-}
-
-.roundborders {
-    border-radius: 5px;
-    border: 1px rgb(251, 253, 251) solid;
+.nav-item:hover{
+	background-color: rgb(251, 253, 251);
 }
 
 .nav-language {
 	text-decoration: none;
 }
 
-.nav-language img {
-	margin-right: 5%;
-}
 
 .list-lang {
 	list-style-type: none;
-}
-
-.large:hover {
-	/* 
-	don't forget the 1px border!
-	The first language is 40px heigh, 
-	the others are 41px
-	*/
-	height: 245px;
 }
