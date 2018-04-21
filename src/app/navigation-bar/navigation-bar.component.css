@@ -4,9 +4,7 @@
     font-style: normal;
     font: normal;
     font-weight: lighter;
-    font-size: 200%;
-	margin-left: 2%;
-	margin-right: 2%;
+    font-size: 150%;
 }
 
 
@@ -16,7 +14,7 @@
 } */
 
 .nav-item:hover{
-	background-color: rgb(251, 253, 251);
+	background-color: rgb(51, 53, 51);
 }
 
 .nav-language {
@@ -26,4 +24,17 @@
 
 .list-lang {
 	list-style-type: none;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("../../assets/icons/languages.svg");
+}
+
+ul.list-lang {
+	list-style-type: none;
+}
+
+.language-link {
+	text-decoration: none; 
+	color: black;
 }

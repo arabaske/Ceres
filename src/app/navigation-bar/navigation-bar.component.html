@@ -1,34 +1,34 @@
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded mb-3">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
+        <div class="dropdown">
+                <button class="custom-toggler btn dropdown-toggle btn-light" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="dropdown-menu bg-faded" aria-labelledby="navbarDropdown">
+                        <ul *ngFor="let lang of languages" class="list-lang">
+                                <li><a class="language-link" href="/{{lang.code}}/"><img class="px-1" src="{{lang.icon}}"/>{{lang.label}}</a></li>
+                        </ul>  
+                </div>
+        </div>
+
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" id="app_name" routerLink="/home">{{applicationName}}</a>
+
+            <a class="navbar-brand mx-4" id="app_name" routerLink="/home">{{applicationName}}</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                    <li class="nav-item p-3" [routerLinkActive]="['active']">
+                    <li class="nav-item p-2" [routerLinkActive]="['active']">
                     <a class="nav-link" i18n routerLink="/dashboard" routerLinkActive="routerActive">HOME<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item p-3" [routerLinkActive]="['active']">
+                    <li class="nav-item p-2" [routerLinkActive]="['active']">
                     <a class="nav-link" i18n routerLink='/cottage' routerLinkActive="routerActive">CABIN</a>
                     </li>
-                    <li class="nav-item p-3" [routerLinkActive]="['active']">
+                    <li class="nav-item p-2" [routerLinkActive]="['active']">
                     <a class="nav-link" i18n routerLink="/reservation" routerLinkActive="routerActive">RESERVATION</a>
                     </li>
               </ul>
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="navbarDropdownMenuLink" 
-                            aria-haspopup="true" 
-                            aria-expanded="true">
-                                    <img src='assets/icons/languages.svg' alt='Dropdown button'>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <ul *ngFor="let lang of languages" class="list-lang">
-                                    <a href="/{{lang.code}}/"><li><img class="px-1" src="{{lang.icon}}"/>{{lang.label}}</li></a>
-                                </ul>
-                            </div>  
-                    </div>
-            </div>
+        </div>
+
 
     </nav>
-    <ng-template #langDefault>Languages</ng-template>
