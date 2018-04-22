@@ -42,6 +42,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { nodemailer } from 'nodemailer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +76,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    nodemailer,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
