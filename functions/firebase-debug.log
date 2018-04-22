@@ -1,0 +1,27 @@
+[debug] [2018-04-22T13:28:11.078Z] ----------------------------------------------------------------------
+[debug] [2018-04-22T13:28:11.080Z] Command:       /home/bask/nodes/node-v8.9.3-linux-x64/bin/node /home/bask/nodes/node-v8.9.3-linux-x64/bin/firebase deploy
+[debug] [2018-04-22T13:28:11.080Z] CLI Version:   3.18.4
+[debug] [2018-04-22T13:28:11.080Z] Platform:      linux
+[debug] [2018-04-22T13:28:11.080Z] Node Version:  v8.9.3
+[debug] [2018-04-22T13:28:11.080Z] Time:          Sun Apr 22 2018 15:28:11 GMT+0200 (CEST)
+[debug] [2018-04-22T13:28:11.080Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-22T13:28:11.086Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-22T13:28:11.086Z] > authorizing via signed-in user
+[debug] [2018-04-22T13:28:11.087Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-22T13:28:11.087Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/_NEllZffnj3VVcJR43INC590tyrEPqKHIR8OtZPYK5M',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Apr 22 2018 15:28:11 GMT+0200 (CEST)
+[debug] [2018-04-22T13:28:11.279Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-22T13:28:11.281Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/martinesstuga  
+  
+ Sun Apr 22 2018 15:28:11 GMT+0200 (CEST)
+[debug] [2018-04-22T13:28:11.968Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-22T13:28:11.968Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/martinesstuga/tokens  
+  
+ Sun Apr 22 2018 15:28:11 GMT+0200 (CEST)
+[debug] [2018-04-22T13:28:12.636Z] <<< HTTP RESPONSE 200
