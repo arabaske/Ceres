@@ -79,29 +79,30 @@ export class ReservationFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   onSubmit() { 
-    this.submitted = true; 
-    //Adding entry to firestore
-    //TODO perform some basic validation ???
-    /*
-    this.firestore.collection('reservations').add({
-      firstName: this.model.firstName,
-      lastName: this.model.LastName,
-      fromDate: this.model.fromDate,
-      toDate: this.model.toDate,
-      email: this.model.email,
-      phone: this.model.phone,
-      info: this.model.additionalInformation
-    }).then(ref => {
-      console.log('Added document with ID: ', ref.id);
-    });*/
+    if(this.validateForm){
+      this.submitted = true; 
+      
 
-    this.reservationsCollection.add(<Reservation>this.model.getData())
-      .then(ref => {
-        console.log('Added document with ID: ', ref.id);
-    });
+      this.reservationsCollection.add(<Reservation>this.model.getData())
+        .then(ref => {
+          console.log('Added document with ID: ', ref.id);
+      });
+  }
+  }
+
+  validateForm(): boolean {
+    var result = true;
+    const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+
+    if(!(email_regex.test(this.model.email))){
+
+    }
+
+    return result;
   }
 
   // TODO: Remove this when we're done

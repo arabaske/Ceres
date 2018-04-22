@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="email" i18n>E-mail</label>
-                    <input type="mail" class="form-control" id="inputEmail" placeholder="e-mail"
+                    <input type="mail" class="form-control" id="inputEmail" placeholder="e-mail" type="email" email
                         required
                         [(ngModel)]="model.email" name="email" #email="ngModel">
                         <div [hidden]="email.valid || email.pristine"
@@ -41,8 +41,12 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="phone" i18n>Phone number</label>
-                    <input type="text" class="form-control" id="inputPhone" placeholder="phone number"
-                        [(ngModel)]="model.phone" name="phone">
+                    <input type="text" class="form-control" id="inputPhone" placeholder="phone number" 
+                        [(ngModel)]="model.phone" name="phone" #phone="ngModel">
+                        <div [hidden]="phone.valid || phone.pristine"
+                        class="alert alert-danger" i18n>
+                        Please enter a valid phone number
+                        </div>
                 </div>
             </div>
 
