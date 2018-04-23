@@ -11,6 +11,7 @@ import { takeWhile } from 'rxjs/operators';
 import 'rxjs/add/observable/timer';
 import { forEach } from '@angular/router/src/utils/collection';
 import { SlideAnim } from '../animations/slide.animation';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-slide-list',
@@ -32,8 +33,8 @@ export class SlideListComponent implements OnInit, OnDestroy {
 
   timerObservable =  Observable.timer(4000, 4000);
 
-  constructor() {
-    console.log('CONSTRUCT component slide-list');
+  constructor(private logService: LoggingService) {
+    this.logService.log('CONSTRUCT component slide-list');
     this.currentSlideIndex = 0;
     this.slideAnimation = new SlideAnimationModel();
     this.slideAnimation.fromSlideID = 0;
@@ -48,18 +49,18 @@ export class SlideListComponent implements OnInit, OnDestroy {
       if(element.isLoaded) result = result + 1;
     });
 
-    console.log('Check loading status' + result);
+    this.logService.log('Check loading status' + result);
 
     return (result === this.slides.length);
   }
 
   ngOnInit() {
-    console.log('INIT component slide-list');
+    this.logService.log('INIT component slide-list');
     this.switchSlide(0, false);
   }
 
   public ngOnDestroy() {
-    console.log('Destroy component slide-list');
+    this.logService.log('Destroy component slide-list');
     this.alive = false;
     this.initSlideState();
   }
@@ -87,8 +88,8 @@ export class SlideListComponent implements OnInit, OnDestroy {
   }
 
   animationDone($event, slide) {
-    console.log('ANIM DONE ' + $event.fromState + ' : ' + $event.toState);
-    console.log('____COUNTER: ' + this.transitionCounter);
+    this.logService.log('ANIM DONE ' + $event.fromState + ' : ' + $event.toState);
+    this.logService.log('____COUNTER: ' + this.transitionCounter);
     if (($event.fromState !== 'void') && ($event.toState !== 'void')) {
       if (this.transitionCounter === 0) {
         this.transitionCounter ++;
@@ -101,8 +102,8 @@ export class SlideListComponent implements OnInit, OnDestroy {
 
 
   animationStart($event, slide, slides) {
-    console.log('ANIM START ' + $event.fromState + ' : ' + $event.toState);
-    // console.log(slides);
+    this.logService.log('ANIM START ' + $event.fromState + ' : ' + $event.toState);
+    // this.logService.log(slides);
     if (($event.fromState !== 'void') && ($event.toState !== 'void')) {
       this.slideAnimation.isBeingAnimated = true;
     }
@@ -118,7 +119,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
     if (touched) {
       this.touched = true;
     }
-    console.log('switching ' + this.currentSlideIndex + ' -> ' + id);
+    this.logService.log('switching ' + this.currentSlideIndex + ' -> ' + id);
     if (id > this.currentSlideIndex) {
       for (let _i = this.currentSlideIndex; _i < id; _i++ ) {
         this.slides[_i].toLeft();
@@ -145,7 +146,7 @@ export class SlideListComponent implements OnInit, OnDestroy {
   //EVENT
 
   onSlideLoaded(id: number){
-    console.log('OnSlideLoaded ' + id);
+    this.logService.log('OnSlideLoaded ' + id);
     this.isLoaded = this.checkLoadStatus();
 
     if (this.slides.length > 1 && this.isLoaded) {

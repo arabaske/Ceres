@@ -136,6 +136,14 @@ export class ReservationFormComponent implements OnInit {
     }  
   }
 
+  isFromDateDisabled = (date: NgbDateStruct, current: {month: number}) => {
+    return (date.month !== current.month) || this.isDateDisabled(date, 'from'); 
+  }
+
+  isToDateDisabled = (date: NgbDateStruct, current: {month: number}) => {
+    return (date.month !== current.month) || this.isDateDisabled(date, 'to'); 
+  }
+
   onFromDateNavigate(next: NgbDateStruct){
     this.fromDateDisplayed = next;
     this.fromDateRangeFilter$.next([next.month, next.year]);

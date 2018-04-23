@@ -1,7 +1,3 @@
-h2{
-    margin-top: 1%;
-    margin-bottom: 3%;
-}
 
 form .inputs{
     margin-top: 1%;
@@ -22,16 +18,16 @@ form .inputs{
 
 .custom-day.disabled, .custom-day.disabled:hover{
     color: darkgray;
-    cursor: auto;
-}
-
-.custom-day.outside {
-    color: darkgray;
+    background-color: inherit;
 }
 
 .custom-day.range, .custom-day:hover {
     background-color: rgba(2, 117, 216, 1);
     color: white;
+}
+
+.custom-day.range:hover {
+    background-color: inherit;
 }
 
 .custom-day.selected {

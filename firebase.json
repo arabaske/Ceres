@@ -9,7 +9,7 @@
     "redirects": [
       {
         "source": "/",
-        "destination": "/en/",
+        "destination": "/se/",
         "type": 301
       }
     ],

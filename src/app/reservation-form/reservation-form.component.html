@@ -1,6 +1,6 @@
 <div class="container">
     <div [hidden] = "submitted">    
-        <h3 i18n>Reservation Form</h3>
+        <h3 i18n>Reservation request form</h3>
         <form class="inputs" (ngSubmit)="onSubmit()" #reservationForm="ngForm">
 
             <div class="row">
@@ -60,7 +60,7 @@
                             required
                             name="fromDate" [(ngModel)]="model.fromDate" #fromDate="ngModel"
                             (navigate)="onFromDateNavigate($event.next)"
-                            ngbDatepicker #fromDatePicker="ngbDatepicker" [dayTemplate]="tFrom">
+                            ngbDatepicker #fromDatePicker="ngbDatepicker" [dayTemplate]="tFrom" [markDisabled]="isFromDateDisabled">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="fromDatePicker.toggle()" type="button">
                         <img src="assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
@@ -79,7 +79,7 @@
                             required
                             name="toDate" [(ngModel)]="model.toDate" #toDate="ngModel"
                             (navigate)="onToDateNavigate($event.next)"
-                            ngbDatepicker #toDatePicker="ngbDatepicker" [dayTemplate]="tTo">
+                            ngbDatepicker #toDatePicker="ngbDatepicker" [dayTemplate]="tTo" [markDisabled]="isToDateDisabled">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" (click)="toDatePicker.toggle()" type="button">
                         <img src="assets/icons/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
@@ -114,24 +114,22 @@
     </div>
 
 
-    <ng-template #tFrom let-date="date" let-selected="selected">
+    <ng-template #tFrom let-date="date" let-selected="selected" let-disabled="disabled">
         <span class="custom-day"
               [class.faded]="isDateBooked(date, 'from')"
-              [class.outside]="isDateOutside(date, 'from')"
-              [class.disabled]="isDateDisabled(date, 'from')"
               [class.selected]="selected"
+              [class.disabled]="disabled"
               (mouseenter)="hoveredDate = date"
               (mouseleave)="hoveredDate = null">
           {{ date.day }}
         </span>
       </ng-template>
 
-      <ng-template #tTo let-date="date" let-selected="selected">
+      <ng-template #tTo let-date="date" let-selected="selected" let-disabled="disabled">
         <span class="custom-day"
               [class.faded]="isDateBooked(date, 'to')"
-              [class.outside]="isDateOutside(date, 'to')"
-              [class.disabled]="isDateDisabled(date, 'to')"
               [class.selected]="selected"
+              [class.disabled]="disabled"
               (mouseenter)="hoveredDate = date"
               (mouseleave)="hoveredDate = null">
           {{ date.day }}

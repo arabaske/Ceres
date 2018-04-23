@@ -41,6 +41,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoggingService } from './logging.service';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [SlideService, SpinnerService],
+  providers: [SlideService, SpinnerService, LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

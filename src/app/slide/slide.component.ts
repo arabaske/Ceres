@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {animate, state, style, transition, trigger, keyframes} from '@angular/animations';
 import { Slide } from '../models/slide';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-slide',
@@ -18,12 +19,12 @@ export class SlideComponent implements OnInit {
   public src: string;
   public showSpinner = true;
 
-  constructor() {
+  constructor(private logService: LoggingService) {
     // this.slide.state = (this.slide.id == this.currentSlideId) ? 'active' : 'inactive';
   }
 
   ngOnInit() {
-    console.log('OnInit ' + this.slide.id);
+    this.logService.log('OnInit ' + this.slide.id);
 	
 	//Start loading the image asynchonously
 	var downloadingImage = new Image();
@@ -40,7 +41,7 @@ export class SlideComponent implements OnInit {
 
 
   onLoadStart(){
-    console.log('LOAD START');
+    this.logService.log('LOAD START');
   }
 
 }
