@@ -1,0 +1,23 @@
+<div class="container">
+    <div *ngIf="reservations$ | async; let items; else loading">
+      <ul>
+          <li *ngFor="let item of items">
+              <pre>{{ item | json }}</pre>
+          </li>
+      </ul>
+    </div>
+</div>
+
+<ng-template #loading>
+    <app-spinner name="reservationList">
+        <div class="container">
+            <div class="row">
+          <div class="text-center">
+              </div>    
+              <div class="animationload">
+                  <div class="osahanloading"></div>
+              </div>
+        </div>
+        </div>
+    </app-spinner>
+</ng-template>

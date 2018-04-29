@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggingService } from '../logging.service';
+import { Observable } from 'rxjs/Observable';
+
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import 'rxjs/add/operator/switchMap';
+import { Reservation } from '../models/reservation';
 
 @Component({
   selector: 'app-administration',
@@ -7,7 +15,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private logService: LoggingService) {
+   }
 
   ngOnInit() {
   }

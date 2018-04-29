@@ -9,11 +9,12 @@ import { CottageComponent } from './cottage/cottage.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: ShellComponent},
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/shell', pathMatch: 'full' },
+  { path: 'shell', component: ShellComponent},
+  { path: 'home', component: DashboardComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'cottage', component: CottageComponent },
+  { path: 'admin', component: AdministrationComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

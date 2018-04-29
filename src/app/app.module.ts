@@ -42,14 +42,13 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoggingService } from './logging.service';
+import { ReservationsCalendarComponent } from './reservations-calendar/reservations-calendar.component';
+import { ReservationsListComponent } from './reservations-list/reservations-list.component';
+import { ReservationItemComponent } from './reservation-item/reservation-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ActionBarComponent,
-    HeaderComponent,
-    NewsContentComponent,
-    NewsListComponent,
     DashboardComponent,
     AdministrationComponent,
     SlideComponent,
@@ -60,7 +59,13 @@ import { LoggingService } from './logging.service';
     CottageComponent,
     ReservationFormComponent,
     SpinnerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ReservationsCalendarComponent,
+    ReservationsListComponent,
+    ReservationsListComponent,
+    ReservationsCalendarComponent,
+    ReservationItemComponent,
+    ReservationItemComponent
   ],
   imports: [
     BrowserModule,

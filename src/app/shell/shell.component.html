@@ -1,12 +1,9 @@
-<div *ngIf="(slideService.getShellSlide() | async) as result else loading">
+<div *ngIf="(slideService.getShellSlide() | async) as result">
     <app-slide-list [slides]=result [config]=sliderConfig></app-slide-list>
     <div class='centered'>
         <h1>MARTINES STUGA</h1>
         <h2>CABIN RENTAL</h2>
         <br>
-        <button routerLink="/dashboard" class='white_bg_button'>ENTER</button>
+        <button routerLink="/home" class='white_bg_button'>ENTER</button>
     </div>
 </div>
-<ng-template #loading>
-    <p>Loading...</p>
-</ng-template>

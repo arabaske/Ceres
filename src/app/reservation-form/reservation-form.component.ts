@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Reservation } from '../models/reservation';
 
@@ -10,8 +10,12 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
 import { CollectionReference, Query } from '@firebase/firestore-types';
+import { error } from '@firebase/database/dist/esm/src/core/util/util';
+import { catchError, takeUntil, map } from 'rxjs/operators';
+import { LoggingService } from '../logging.service';
+import { ReplaySubject } from 'rxjs';
+import 'rxjs/add/operator/takeUntil'
 
 
 const now = new Date();
@@ -34,9 +38,12 @@ const nowDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() +
   templateUrl: './reservation-form.component.html',
   styleUrls: ['./reservation-form.component.css']
 })
-export class ReservationFormComponent implements OnInit {
+export class ReservationFormComponent implements OnInit, OnDestroy {
 
   submitted = false;
+  error = false;
+  showSpinner = true;
+  loadingCount = 0;
   model = new Reservation('', '', '', '', null, null, '');
 
   fromDateDisplayed: NgbDateStruct;
@@ -54,41 +61,66 @@ export class ReservationFormComponent implements OnInit {
   fromDateRangeFilter$: BehaviorSubject<[number, number]|null>;
   toDateRangeFilter$: BehaviorSubject<[number, number]|null>;
 
+  private alive$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  constructor(db: AngularFirestore) {
+
+  constructor(db: AngularFirestore, private logService: LoggingService) {
     this.firestore = db;
     this.reservationsCollection = db.collection('/reservations');
 
     this.fromDateRangeFilter$ = new BehaviorSubject(null);
     this.toDateRangeFilter$ = new BehaviorSubject(null);
+
     //this.items = this.reservationsCollection.valueChanges();
     
     this.fromItems$ = this.fromDateRangeFilter$.switchMap(([monthDisplayed, yearDisplayed]) =>
-    db.collection<Reservation>('/reservations', ref => ref.where('MONTHS_TO_RENDER.' + yearDisplayed + '_' + monthDisplayed, "==", true)).valueChanges()
-    );
+    db.collection<Reservation>('/reservations', 
+        ref => ref.where('MONTHS_TO_RENDER.' + yearDisplayed + '_' + monthDisplayed, "==", true)).valueChanges()
+    ).takeUntil(this.alive$);
 
     this.toRangeItems$ = this.toDateRangeFilter$.switchMap(([monthDisplayed, yearDisplayed]) =>
     db.collection<Reservation>('/reservations', ref => ref.where('MONTHS_TO_RENDER.' + yearDisplayed + '_' + monthDisplayed, "==", true)).valueChanges()
-    );
+    ).takeUntil(this.alive$);
 
     this.fromDateRangeFilter$.next([now.getMonth() + 1, now.getFullYear()]);
     this.toDateRangeFilter$.next([now.getMonth() + 1, now.getFullYear()]);
 
-    this.fromItems$.subscribe(val => this.fromReservationsArray = val);
-    this.toRangeItems$.subscribe(val => this.toReservationsArray = val);
+    this.fromItems$.subscribe(val => {
+      this.fromReservationsArray = val;
+      if(this.showSpinner){
+        this.loadingCount ++;
+        this.showSpinner = (this.loadingCount < 2);
+      }
+    });
+    this.toRangeItems$.subscribe(val => {
+      this.toReservationsArray = val;
+      if(this.showSpinner){
+        this.loadingCount ++;
+        this.showSpinner = (this.loadingCount < 2);
+      }
+    });
   }
 
   ngOnInit() {
     
   }
 
+  public ngOnDestroy() {
+    this.alive$.next(true);
+    this.alive$.complete();
+  }
+
   onSubmit() { 
-    this.submitted = true; 
     
+    this.submitted = true; 
 
     this.reservationsCollection.add(<Reservation>this.model.getData())
       .then(ref => {
-        console.log('Added document with ID: ', ref.id);
+        this.logService.log('Added document with ID: ' + ref.id);
+    })
+    .catch(err => {
+      this.error = true; 
+      this.logService.log(err);
     });
   
   }

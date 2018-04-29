@@ -1,7 +1,19 @@
 <div class="container">
     <div [hidden] = "submitted">    
         <h3 i18n>Reservation request form</h3>
-        <form class="inputs" (ngSubmit)="onSubmit()" #reservationForm="ngForm">
+        <app-spinner name="reservationForm" [(show)]="showSpinner">
+            <div class="container">
+                <div class="row">
+              <div class="text-center">
+                  </div>    
+                  <div class="animationload">
+                      <div class="osahanloading"></div>
+                  </div>
+            </div>
+            </div>
+        </app-spinner>
+
+        <form class="inputs" (ngSubmit)="onSubmit()" #reservationForm="ngForm" [hidden]="showSpinner">
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -109,8 +121,11 @@
 
         </form>
     </div>
-    <div [hidden]="!submitted">
+    <div [hidden]="!submitted || error">
         <p i18n>You reservation has not yet been approved ! You will be contacted blabla...</p>
+    </div>
+    <div [hidden]="!error">
+        <p i18n>Oops something went wrong...</p>
     </div>
 
 
