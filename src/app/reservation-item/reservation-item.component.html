@@ -1,4 +1,26 @@
-<div id="frame">
-  {{reservation.LastName + " " + reservation.firstName}} 
 
+<div class="container mb-4 px-4">
+  <div class="rounded frame">
+
+      <div class="bg-info w-100 rounded-top">
+        <span class="float-right text-white mr-2">{{reservation.status}}</span>
+          <div class="text-white ml-2">{{'From: ' + dateFormat(reservation.fromDate)}}</div>
+        <div class="text-white ml-2">{{'To: ' + dateFormat(reservation.toDate)}}</div>
+      </div>
+
+    <div class="row d-flex justify-content-around">
+      <div class="col-sm-4"> {{reservation.LastName}} </div>
+      <div class="col-sm-4"> {{reservation.email}} </div>
+    </div>
+    <div class="row d-flex justify-content-around">
+      <div class="col-sm-4"> {{reservation.firstName}} </div>
+      <div class="col-sm-4"> {{reservation.phone}} </div>
+    </div>
+<!--32C79D--> 
+
+    <div id="button_panel" class="justify-content-end row m-3">
+      <button class="btn btn-success m-2">Approve</button>
+      <button class="btn btn-danger m-2">Reject</button>
+    </div>
+  </div>
 </div>

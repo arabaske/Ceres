@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Reservation } from '../models/reservation';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservation-item',
@@ -13,6 +14,10 @@ export class ReservationItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  dateFormat(date: NgbDateStruct): string{
+    return (date.year + "-" + date.month + "-" + date.day);
   }
 
 }

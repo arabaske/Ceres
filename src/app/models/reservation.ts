@@ -18,7 +18,7 @@ export class Reservation{
         Object.keys(this).map(key => result[key] = this[key]);
         result["MONTHS_TO_RENDER"] = this.months;
         return result;
-    }
+	}
 
     public get months(){
         var map: { [id: string]: boolean; } = {}
