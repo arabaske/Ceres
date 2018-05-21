@@ -1,6 +1,7 @@
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { IReservation } from '../models/iReservation';
 
-export class Reservation{
+export class Reservation implements IReservation{
 
     constructor(
         public firstName: string,

@@ -1,2 +1,27 @@
-<app-reservations-calendar></app-reservations-calendar>
-<app-reservations-list></app-reservations-list>
+<div *ngIf="auth.user | async; then authenticated else guest">
+    <!-- template will replace this div -->
+</div>
+
+
+
+    <ng-template #guest>
+    <h3>Howdy, GUEST</h3>
+    <p>Login to get started...</p>
+    
+    <button (click)="auth.googleLogin()">
+      <i class="fa fa-google"></i> Connect Google
+    </button>
+    
+    </ng-template>
+    
+    
+    <!-- User logged in -->
+    <ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+        <button (click)="auth.signOut()">Logout</button>
+        <div class="container my-2">
+            <h3>Reservations:</h3>
+            <app-reservations-list></app-reservations-list>
+        </div>
+    </div>
+    </ng-template>

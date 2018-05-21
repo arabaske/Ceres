@@ -7,6 +7,8 @@ import { ShellComponent } from './shell/shell.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CottageComponent } from './cottage/cottage.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component'
+import { AuthGuard } from './core/auth.guard'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shell', pathMatch: 'full' },
@@ -14,7 +16,8 @@ const routes: Routes = [
   { path: 'home', component: DashboardComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'cottage', component: CottageComponent },
-  { path: 'admin', component: AdministrationComponent },
+  { path: 'admin', component: AdministrationComponent, canActivate:[AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

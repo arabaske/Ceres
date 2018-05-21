@@ -1,8 +1,29 @@
+.header {
+    background-color: #5476a2;
+}
+
 .frame {
-    background-color: #e1f1f1;
+    background-color: #d6f8ff66;
+}
+
+.row-img {
+    width: 5%;
 }
 
 .icons {
     max-width: 3vw !important;
     max-height: 3vw !important;
+}
+
+.btn-outline-primary {
+    color: #0db86e;
+    background-image: none;
+    background-color: transparent;
+    border-color: #0db86e;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #0db86e;
+    border-color: #0db86e;
 }

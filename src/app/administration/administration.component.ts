@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/switchMap';
 import { Reservation } from '../models/reservation';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-administration',
@@ -15,7 +16,7 @@ import { Reservation } from '../models/reservation';
 })
 export class AdministrationComponent implements OnInit {
 
-  constructor(private logService: LoggingService) {
+  constructor(private logService: LoggingService, public auth: AuthService) {
    }
 
   ngOnInit() {

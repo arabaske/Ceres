@@ -2,7 +2,7 @@
     <div *ngIf="reservations$ | async; let items; else loading">
       <ul>
           <li *ngFor="let item of items">
-              <app-reservation-item [reservation]="item"></app-reservation-item>
+              <app-reservation-item [reservation]="item" [db]="_db"></app-reservation-item>
           </li>
       </ul>
     </div>

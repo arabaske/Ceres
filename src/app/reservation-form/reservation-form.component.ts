@@ -11,7 +11,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/switchMap';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { error } from '@firebase/database/dist/esm/src/core/util/util';
 import { catchError, takeUntil, map } from 'rxjs/operators';
 import { LoggingService } from '../logging.service';
 import { ReplaySubject } from 'rxjs';

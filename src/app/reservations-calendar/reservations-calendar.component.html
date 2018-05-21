@@ -1,8 +1,19 @@
-<div class="container mx-auto">
+<div class="container">
     <ngb-datepicker #dp [(ngModel)]="model" (navigate)="onDateNavigate($event.next); date = $event.next" [dayTemplate]="td" [markDisabled]="isFromDateDisabled"></ngb-datepicker>
 
-    <button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Select Today</button>
-    <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo()">To current month</button>
+    <div id="legend">
+        <ul>
+            <li *ngFor="let l of legend">
+                <p class="{{l.color}}">{{l.name}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="control">
+        <button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Select Today</button>
+        <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo()">To current month</button>
+    </div>
+
 </div>
 
 <ng-template #td let-date="date" let-selected="selected" let-disabled="disabled">

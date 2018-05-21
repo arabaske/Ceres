@@ -21,6 +21,8 @@ const after = (one: NgbDateStruct, two: NgbDateStruct) =>
 
 const nowDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()}
 
+
+
 @Component({
   selector: 'app-reservations-calendar',
   templateUrl: './reservations-calendar.component.html',
@@ -34,6 +36,8 @@ export class ReservationsCalendarComponent implements OnInit, OnDestroy {
   date: {year: number, month: number};
   private reservationsArray: Reservation[];
   private alive$: ReplaySubject<boolean> = new ReplaySubject(1);
+
+  public legend: {name: string, color: string}[] = [{"name": "Booked", color:"custom-day faded"}];
 
   selectToday() {
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
@@ -50,14 +54,15 @@ export class ReservationsCalendarComponent implements OnInit, OnDestroy {
 
     this.dateRangeFilter$.next([now.getMonth() + 1, now.getFullYear()]);
 
-    this.reservationToDisplay$.subscribe(val => {
-      this.reservationsArray = val;
-    });
+
    }
 
 
 
   ngOnInit() {
+    this.reservationToDisplay$.subscribe(val => {
+      if(val != null) this.reservationsArray = val;
+    });
   }
 
   public ngOnDestroy() {
@@ -66,6 +71,8 @@ export class ReservationsCalendarComponent implements OnInit, OnDestroy {
   }
 
   isDateBooked(date: NgbDateStruct){
+
+    if(this.reservationsArray === null) return false;
 
     for (const reserv of this.reservationsArray) {
       if(reserv != null && this.isInside(reserv, date)){

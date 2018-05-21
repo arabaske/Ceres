@@ -8,6 +8,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 
 import { FormsModule } from '@angular/forms';
+import { CoreModule } from './core/core.module';
 
 // external libraries
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -45,6 +46,10 @@ import { LoggingService } from './logging.service';
 import { ReservationsCalendarComponent } from './reservations-calendar/reservations-calendar.component';
 import { ReservationsListComponent } from './reservations-list/reservations-list.component';
 import { ReservationItemComponent } from './reservation-item/reservation-item.component';
+import { ReservationsService } from './reservations.service';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from './core/auth.guard';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +70,9 @@ import { ReservationItemComponent } from './reservation-item/reservation-item.co
     ReservationsListComponent,
     ReservationsCalendarComponent,
     ReservationItemComponent,
-    ReservationItemComponent
+    ReservationItemComponent,
+    UserProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +87,7 @@ import { ReservationItemComponent } from './reservation-item/reservation-item.co
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    CoreModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
@@ -87,7 +95,7 @@ import { ReservationItemComponent } from './reservation-item/reservation-item.co
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [SlideService, SpinnerService, LoggingService],
+  providers: [SlideService, SpinnerService, LoggingService, ReservationsService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
