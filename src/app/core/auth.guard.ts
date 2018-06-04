@@ -17,10 +17,11 @@ export class AuthGuard implements CanActivate {
 
       return this.auth.user
            .take(1)
-           .map(user => !!user)
+           .map(user => !!user && user.email === 'francois.snaps@gmail.com')
            .do(loggedIn => {
+             console.log("logIN !!!");
              if (!loggedIn) {
-               console.log('access denied')
+               console.log('access denied');
                this.router.navigate(['/login']);
              }
          })

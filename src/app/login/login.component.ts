@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { Router } from '@angular/router';
 import { Subject, ReplaySubject } from 'rxjs';
@@ -8,22 +8,27 @@ import { Subject, ReplaySubject } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
 
   private isUserLogged$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(public auth: AuthService, private router: Router) { 
-    auth.user.takeUntil(this.isUserLogged$).subscribe(user => {
+    auth.user.subscribe(user => {
+      console.log(user);
       if(user != null){
         router.navigate(['/admin']);
-        this.isUserLogged$.next(true);
-        this.isUserLogged$.complete();
+        
       }
       err => console.log(err);
     })
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    this.isUserLogged$.next(true);
   }
 
 }

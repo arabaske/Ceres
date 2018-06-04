@@ -40,6 +40,7 @@
     "firebase-admin": "^5.11.0",
     "moment": "^2.21.0",
     "ng2-ckeditor": "^1.1.13",
+    "node": "^10.2.0",
     "popper.js": "^1.14.3",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
