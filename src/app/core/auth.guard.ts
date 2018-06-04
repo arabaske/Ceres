@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
 
       return this.auth.user
            .take(1)
-           .map(user => !!user && user.email === 'francois.snaps@gmail.com')
+           .map(user => !!user && user.email === 'martine.stuga@gmail.com')
            .do(loggedIn => {
              console.log("logIN !!!");
              if (!loggedIn) {
