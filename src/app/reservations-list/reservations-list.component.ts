@@ -17,6 +17,8 @@ export class ReservationsListComponent implements OnInit {
   reservationsStore: AngularFirestoreCollection<IReservation>;
   _db: AngularFirestore;
 
+  filters: string[] = ['hello', 'world'];
+
   constructor(db: AngularFirestore, private logService: LoggingService) {
     this._db = db;
     this.reservationsStore = this._db.collection<IReservation>('/reservations');

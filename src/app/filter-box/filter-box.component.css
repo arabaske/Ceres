@@ -1,0 +1,14 @@
+ul {
+    list-style-type: none;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+li {
+    display: inline-block;
+}
+
+
+#filters-box{
+    background: #d6f8ff66;
+}

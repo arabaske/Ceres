@@ -1,10 +1,13 @@
 <div class="container">
     <div *ngIf="reservations$ | async; let items; else loading">
-      <ul>
-          <li *ngFor="let item of items">
-              <app-reservation-item [reservation]="item" [db]="_db"></app-reservation-item>
-          </li>
-      </ul>
+        <div class="m-2">
+            <app-filter-box [fields]="filters"></app-filter-box>
+        </div>
+        <ul>
+            <li *ngFor="let item of items">
+                <app-reservation-item [reservation]="item" [db]="_db"></app-reservation-item>
+            </li>
+        </ul>
     </div>
 </div>
 

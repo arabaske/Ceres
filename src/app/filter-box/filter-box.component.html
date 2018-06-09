@@ -1,0 +1,17 @@
+<div class="container">
+  <div id="available-list">
+      <ul>
+        Filters:
+          <li *ngFor="let possibleFilter of availableFilters" class="p-2">
+              <button type="button" class="btn btn-light" (click)="addFilter(possibleFilter)">{{'+ ' + possibleFilter}}</button>
+          </li>
+      </ul>
+  </div>
+  <div id="filters-box" class="border border-info">
+      <ul>
+          <li *ngFor="let filter of filters" class="p-2">
+              <button type="button" class="btn btn-info" (click)="removeFilter(filter)">{{'- ' + filter}}</button>
+          </li>
+      </ul>
+  </div>
+</div>

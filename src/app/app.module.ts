@@ -50,6 +50,7 @@ import { ReservationsService } from './reservations.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { FilterBoxComponent } from './filter-box/filter-box.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { LoginComponent } from './login/login.component';
     ReservationItemComponent,
     ReservationItemComponent,
     UserProfileComponent,
-    LoginComponent
+    LoginComponent,
+    FilterBoxComponent
   ],
   imports: [
     BrowserModule,
