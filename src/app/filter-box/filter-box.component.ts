@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter-box',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FilterBoxComponent implements OnInit {
 
   @Input() fields: string[];
+  @Output() filtered =  new EventEmitter<string[]>();
 
   public filters: string[];
   public availableFilters: string[];
@@ -29,6 +30,8 @@ export class FilterBoxComponent implements OnInit {
     if(index !== -1){
       this.availableFilters.splice(index, 1);
     }
+
+    this.filtered.emit(this.filters);
   }
 
   public removeFilter(value: string){
@@ -39,6 +42,8 @@ export class FilterBoxComponent implements OnInit {
     }
 
     this.availableFilters.push(value);
+
+    this.filtered.emit(this.filters);
   }
 
 }

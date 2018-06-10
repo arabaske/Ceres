@@ -17,7 +17,7 @@ export class ReservationsListComponent implements OnInit {
   reservationsStore: AngularFirestoreCollection<IReservation>;
   _db: AngularFirestore;
 
-  filters: string[] = ['hello', 'world'];
+  availableFilters: string[] = ['new', 'Rejected', 'Approved'];
 
   constructor(db: AngularFirestore, private logService: LoggingService) {
     this._db = db;
@@ -29,6 +29,10 @@ export class ReservationsListComponent implements OnInit {
         return {id,...data};
       })
     });
+   }
+
+   onFiltered(filters: string[]){
+     //TODO
    }
 
   ngOnInit() {

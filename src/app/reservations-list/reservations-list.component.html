@@ -1,7 +1,7 @@
 <div class="container">
     <div *ngIf="reservations$ | async; let items; else loading">
         <div class="m-2">
-            <app-filter-box [fields]="filters"></app-filter-box>
+            <app-filter-box [fields]="availableFilters" (filtered)="onFiltered($event)"></app-filter-box>
         </div>
         <ul>
             <li *ngFor="let item of items">
