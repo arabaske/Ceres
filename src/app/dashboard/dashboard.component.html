@@ -13,7 +13,20 @@
     <br>
 
     <h4 i18n>Localisation</h4>
-    <agm-map [latitude]="lat" [longitude]="lng">
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
+    <div class="container">
+            <div class="p-2 d-flex flex-row">
+                <div class="p-2"> <img class="icons" src="/assets/icons/maps_location.svg" /></div>
+                <div class="p-2">
+                 <p>Råbockavägen 40 <br/>
+                        262 63 Ängelholm<br/>
+                        Sweden<br/>
+                </p>
+            </div>
+            </div>
+            <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+
+    </div>
+    
 </div>
